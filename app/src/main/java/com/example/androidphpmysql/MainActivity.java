@@ -3,10 +3,12 @@ package com.example.androidphpmysql;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private EditText editTextUserName,editTextPassword,editTextEmail;
     private Button buttonRegister;
+    private TextView textViewLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +40,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editTextPassword=findViewById(R.id.editTextPassword);
         editTextUserName=findViewById(R.id.editTextUserName);
         buttonRegister=findViewById(R.id.buttonRegister);
+        textViewLogin=(TextView) findViewById(R.id.textViewLogin);
 
         buttonRegister.setOnClickListener(this);
+        textViewLogin.setOnClickListener(this);
+
     }
 
     private void registerUser() {
@@ -83,6 +89,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         if(view==buttonRegister)
             registerUser();
+        if(view==textViewLogin)
+            startActivity(new Intent(this,LoginActivity.class));
     }
 
 }
